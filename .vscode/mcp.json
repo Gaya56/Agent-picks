@@ -5,7 +5,7 @@
             "args": [
                 "-y",
                 "@modelcontextprotocol/server-filesystem@2025.8.21",
-                "/workspaces/Agent-picks/Orchestrating-Agent/"
+                "/workspaces/Agent-picks/"
             ],
             "type": "stdio"
         },
