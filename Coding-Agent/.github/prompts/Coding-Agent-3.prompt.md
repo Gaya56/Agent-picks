@@ -18,16 +18,16 @@ description: 'Phase 3: Review implementation, validate changes, optimize'
    Verify: Matches designed interfaces
    ```
 
-2. **Context7**: Search for similar patterns
+2. **Context7**: Compare patterns
    ```
    Search: [feature type]
-   Compare: Your implementation vs existing patterns
+   Compare: Your implementation vs existing patterns vs official docs
    ```
 
-3. **Archon**: Check your notes
+3. **Archon**: Check your notes and code examples
    ```
    Query: [project requirements for this feature]
-   Verify: Implementation meets your documented needs
+   Verify: Implementation meets your documented needs + matches saved examples
    ```
 
 **Output:**
@@ -35,6 +35,7 @@ description: 'Phase 3: Review implementation, validate changes, optimize'
 ## Validation Results
 ✓ Matches architecture: [Yes/No]
 ✓ Follows codebase patterns: [Yes/No]
+✓ Matches official docs: [Yes/No]
 ✓ Meets project requirements: [Yes/No]
 ```
 
@@ -57,7 +58,7 @@ description: 'Phase 3: Review implementation, validate changes, optimize'
 **For each approved optimization:**
 1. Use serena to make precise changes
 2. Test in terminal
-3. Validate with Context7 (similar patterns still work)
+3. Validate with Context7 (official pattern vs your code still aligned)
 
 ---
 
@@ -74,16 +75,17 @@ description: 'Phase 3: Review implementation, validate changes, optimize'
 **Symbols Added/Modified**: [exact names]
 **Tests**: [terminal commands that passed]
 **Validation**: Serena ✓ | Context7 ✓ | GitHub ✓
-**Notes for Archon**: [Any learnings to save]
+**Pattern Alignment**: Official docs ✓ | Existing code ✓
+**Notes for Archon**: [Any learnings/code examples to save]
 ```
 
-**Ask:** "Review complete. Save these learnings to your archon knowledge base?"
+**Ask:** "Review complete. Save these learnings and code examples to your archon knowledge base?"
 
 ---
 
 ## Constraints
 - Always compare against Phase 1 architecture
 - Use serena to verify no breaking changes
-- Check Context7 for pattern consistency
+- Check Context7 for pattern consistency with official docs
 - Ask permission before any optimizations
-- Offer to save learnings to archon
+- Offer to save learnings and code examples to archon

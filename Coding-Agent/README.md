@@ -33,14 +33,16 @@ Everything else is optional and flexible.
 ## How It Works
 
 ### Phase 1: Architecture (Permission Required)
-1. Checks **your archon notes** for requirements
+
+1. Checks **your archon notes/code examples** for requirements
 2. Checks **crawl4ai-rag docs** for best practices
 3. Uses **serena** to find exact symbols/paths
-4. Uses **Context7** to find similar patterns
+4. Uses **Context7** to review official docs + compare with your patterns
 5. Uses **github MCP** to verify structure
 6. **Asks permission** to proceed
 
 ### Phase 2: Implementation (Permission Per Component)
+
 1. Validates symbols with **serena** (exact line numbers)
 2. Validates patterns with **Context7**
 3. Validates paths with **github MCP**
@@ -49,6 +51,7 @@ Everything else is optional and flexible.
 6. Validates after each change
 
 ### Phase 3: Review (Permission for Optimizations)
+
 1. Compares before/after with **serena**
 2. Checks patterns with **Context7**
 3. Verifies against **archon notes**
@@ -59,10 +62,10 @@ Everything else is optional and flexible.
 
 | Tool | Purpose |
 |------|---------|
-| **archon** | Your project knowledge, notes, tasks, examples |
+| **archon** | Your project knowledge, notes, tasks, code examples |
 | **mcp_crawl4ai-rag** | Official docs you've crawled |
 | **mcp_serena** | Find exact symbols, functions, line numbers |
-| **mcp_context7** | Search code patterns in codebase |
+| **mcp_context7** | Review official docs + compare with your codebase patterns |
 | **github** | Verify file paths and structure |
 | **mcp_memory** | Phase handoffs |
 | **mcp_sequential-thinking** | Validation reasoning |

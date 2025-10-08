@@ -56,9 +56,9 @@ Before any implementation:
 
 | Tool | OLD Purpose | NEW Purpose |
 |------|-------------|-------------|
-| archon | Generic code patterns | YOUR project knowledge, notes, tasks |
+| archon | Generic code patterns | YOUR project knowledge, notes, tasks, code examples |
 | (new) mcp-crawl4ai-rag | - | Official docs you've crawled |
-| (new) mcp_context7 | - | Search code patterns in your codebase |
+| (new) mcp_context7 | - | Review official docs + compare with your codebase patterns |
 | serena | Code analysis | Exact symbols/line numbers validation |
 | github | Repo access | Verify file paths before editing |
 
@@ -75,8 +75,8 @@ Before any implementation:
 
 ### 1. Set Up Your Knowledge Base
 ```bash
-# Add your project notes/tasks to archon
-# Example: Project requirements, coding standards, ongoing tasks
+# Add your project notes/tasks/code examples to archon
+# Example: Project requirements, coding standards, ongoing tasks, reusable snippets
 ```
 
 ### 2. Crawl Documentation
@@ -97,9 +97,9 @@ Edit `.github/instructions/Coding-Agent.instructions.md`:
 @workspace Use Coding-Agent-1.prompt.md for [small feature]
 
 # It will:
-# 1. Check your archon notes
+# 1. Check your archon notes/code examples
 # 2. Check crawl4ai-rag docs
-# 3. Validate with serena + Context7 + github
+# 3. Validate with serena + Context7 (compare docs vs your patterns) + github
 # 4. Ask your permission
 ```
 
@@ -113,10 +113,10 @@ Edit `.github/instructions/Coding-Agent.instructions.md`:
 
 **After** (new approach):
 ```
-1. Check archon: "User's notes say use JWT for auth"
+1. Check archon: "User's notes say use JWT for auth + saved code example"
 2. Check crawl4ai-rag: "Passport.js official docs recommend..."
 3. Serena: "Found `authenticateUser` at line 47 in auth.js"
-4. Context7: "Similar auth pattern in admin.js lines 22-35"
+4. Context7: "Compare official pattern vs similar auth in admin.js:22-35"
 5. GitHub: "Confirmed auth.js exists at src/middleware/auth.js"
 6. Ask: "Found integration point. Proceed with implementation?"
 ```

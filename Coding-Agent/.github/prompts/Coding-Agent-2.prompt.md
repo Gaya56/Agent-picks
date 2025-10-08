@@ -26,6 +26,7 @@ description: 'Phase 2: Implement with validation, terminal testing, permission c
 3. **Context7**: Review similar implementations one more time
    ```
    Search: [similar feature]
+   Compare: Official pattern vs your existing code
    ```
 
 4. **Crawl4ai-rag**: Check official examples
@@ -85,6 +86,7 @@ print('✓ Test passed')
    ```
    Search: [related features]
    Confirm: Integration matches existing patterns
+   Compare: Official docs vs your implementation
    ```
 
 3. **Terminal Test**: Run integration test

@@ -9,9 +9,10 @@ description: 'Phase 1: Validate requirements, analyze codebase, design architect
 ## Step 1: Gather Context & Requirements
 
 **Check Your Knowledge First:**
-1. **Archon**: `[Query archon for your project notes/tasks about this feature]`
+1. **Archon**: `[Query archon for your project notes/tasks/code examples about this feature]`
    - What have you documented about this?
    - Any specific requirements or constraints?
+   - Any reusable code examples?
 
 2. **Crawl4ai-rag**: `[Query official docs for the tool/library]`
    - How does official documentation recommend using this?
@@ -36,6 +37,7 @@ description: 'Phase 1: Validate requirements, analyze codebase, design architect
    ```
    Search: "[similar feature pattern]"
    Result: [Existing code examples to follow]
+   Compare: Official docs pattern vs your codebase
    ```
 
 3. **GitHub MCP**: Verify file structure
