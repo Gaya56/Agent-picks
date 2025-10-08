@@ -1,14 +1,5 @@
----
-title: Research Agent
----
-# Research Agent    
-We will be creating a Research Agent that can perform research tasks across multiple phases. Each phase will have its own specific requirements, constraints, and success criteria.
+# Research Agent Framework Overview
 
-- Defined by the prompt files in the `/workspaces/Agent-picks/Research-Agent/.github` directory, these phases will guide the agent's behavior and focus areas.
+The Research Agent framework is designed to facilitate efficient research tasks across multiple phases, providing a reusable structure that can be adapted for various projects. This framework includes specialized components such as chat modes, instructions, and prompts, which are essential for guiding the agent's behavior and ensuring context-aware responses. By defining clear phases with specific requirements and constraints, the framework aims to streamline the research process, allowing developers to quickly access relevant information and documentation without excessive token consumption.
 
-- The agent will utilize a custom chat mode defined in the `/workspaces/Agent-picks/Research-Agent/.github/chatmodes` directory, which specifies how the AI should behave, including response style and available tools.
-
-- The agent will follow the instructions in the prompt files for each phase, ensuring that it adheres to the specific requirements and constraints outlined.
-
-- The agent will be able to switch between different phases as needed, allowing for a flexible and adaptive research process.
-
+Incorporating best practices for chat modes and instructions, the framework emphasizes modularity and reusability. Each component is crafted to support a wide range of research activities, from tool discovery to documentation generation. The goal is to create a versatile agent that can efficiently process and organize information, ultimately enhancing the research capabilities of developers across different projects. This approach not only improves productivity but also ensures that the agent remains adaptable to evolving project needs.
