@@ -1,107 +1,59 @@
 # Multi-Agent Development System
 
-Three specialized AI agents for research, coding, and project coordination.
+Three specialized AI agents for research, coding, and project coordination. See [AGENT-TOOLS.md](./AGENT-TOOLS.md) for tool details.
 
-## 🚀 Quick Start
+## The Three Agents
 
-**New to this system?** → Read **[QUICK-SETUP.md](./QUICK-SETUP.md)** (Under 50 lines)
+**🔍 Research Agent** - Discovers, evaluates, and recommends tools/libraries through 3-phase process  
+**💻 Coding Agent** - Permission-based development with 5-source validation  
+**🎯 Orchestrator** - Coordinates agents, explains in simple English with exact technical references
 
-For detailed documentation → Read **[COMPLETE-AGENT-SYSTEM.md](./COMPLETE-AGENT-SYSTEM.md)**
+## Quick Setup (15 minutes)
 
----
-
-## Agents Overview
-
-### 🔍 Research Agent
-Discovers, evaluates, and recommends tools/libraries through 3-phase process.
-
-- **Use when**: Need to compare libraries, evaluate APIs, research tools
-- **Saves to**: `.agent-workspace/research/`
-- **Documentation**: [Research-Agent/README.md](./Research-Agent/README.md)
-
-### 💻 Coding Agent
-Permission-based development with validation-first workflow.
-
-- **Use when**: Design architecture, implement features, review code
-- **Saves to**: `.agent-workspace/coding/` (with exact file:line references)
-- **Documentation**: [Coding-Agent/README.md](./Coding-Agent/README.md)
-
-### 🎯 Orchestrator Agent
-Your brainstorming partner who explains in simple English with exact technical references.
-
-- **Use when**: Need project status, compare outputs, route next task, clarify ideas
-- **Maintains**: `.agent-workspace/project-state.md`
-- **Documentation**: [Orchestrating-Agent/README.md](./Orchestrating-Agent/README.md)
-
----
+1. **Copy agent files** to `.github/chatmodes/`, `.github/instructions/`, `.github/prompts/`
+2. **Create workspace**: `mkdir -p .agent-workspace/research .agent-workspace/coding`
+3. **Fill out** `Coding-Agent.instructions.md` with your project details
+4. **Open 3 VS Code windows**, select chat modes: Orchestrator, Coding-Agent, Research-Agent-code
+5. **Start**: Ask Orchestrator to analyze your repository
 
 ## Typical Workflow
 
-1. **Start with Orchestrator** → "Where are we in this project?"
-2. **Get routed** → "Use Coding Agent to implement X"
-3. **Switch to Coding Agent** → Do the work, save to workspace
-4. **Back to Orchestrator** → "Compare outputs" or "What's next?"
-5. **Repeat** → Orchestrator coordinates everything
-
----
-
-## Setup for New Repository
-
-See **[QUICK-SETUP.md](./QUICK-SETUP.md)** for step-by-step guide (~15 minutes):
-
-1. Copy agent files to `.github/` folder
-2. Create `.agent-workspace/` directory
-3. Fill out Coding-Agent instructions with your project details
-4. Open 3 VS Code windows with different chat modes
-5. Start with Orchestrator analyzing your repo
-
----
+1. Orchestrator → "Where are we?" or "What's next?"
+2. Orchestrator routes → "Use Coding Agent for X"
+3. Switch to Coding/Research window → Do the work
+4. Agents save outputs → `.agent-workspace/research/` or `coding/`
+5. Back to Orchestrator → "Compare outputs" or track progress
 
 ## Repository Structure
 
 ```
-Agent-picks/
-├── QUICK-SETUP.md              # Setup guide for new repos
-├── COMPLETE-AGENT-SYSTEM.md    # Full system documentation
-├── Research-Agent/             # Research agent files
-├── Coding-Agent/               # Coding agent files
-├── Orchestrating-Agent/        # Orchestrator agent files
-└── .agent-workspace/           # Shared coordination workspace
-    ├── research/               # Research outputs
-    ├── coding/                 # Coding outputs
-    └── project-state.md        # Project status
+.github/
+├── chatmodes/          # Agent behaviors (3 files)
+├── instructions/       # Project context (3 files)
+└── prompts/            # Workflows (9 files: Research 3, Coding 3, Orchestrator 3)
+Research-Agent/         # Docs + framework guides
+Coding-Agent/           # Docs + implementation notes
+Orchestrating-Agent/    # Docs + usage guides
+.agent-workspace/       # Shared outputs (research/, coding/, project-state.md)
 ```
-
----
 
 ## Key Features
 
-- **Token Efficient**: Prompts reduced by 40-50%
-- **Exact References**: Always includes file:line, symbols, imports, hooks
-- **Simple English**: Orchestrator explains technical concepts plainly
-- **Permission-Based**: Coding Agent asks before making changes
-- **Validation-First**: Checks 5 sources before implementing
-- **Workspace Coordination**: All agents save to shared location
-
----
-
-## Documentation
-
-- **[QUICK-SETUP.md](./QUICK-SETUP.md)**: New repository setup (under 50 lines)
-- **[COMPLETE-AGENT-SYSTEM.md](./COMPLETE-AGENT-SYSTEM.md)**: Full system overview
-- **[Research-Agent/README.md](./Research-Agent/README.md)**: Research agent guide
-- **[Coding-Agent/README.md](./Coding-Agent/README.md)**: Coding agent guide
-- **[Orchestrating-Agent/README.md](./Orchestrating-Agent/README.md)**: Orchestrator guide
-
----
+- **Token Efficient**: Prompts 40-50% smaller, responses 50-75 words (Orchestrator)
+- **Exact References**: file:line, symbols, imports, hooks, workflows
+- **Permission-Based**: Coding Agent asks before changes
+- **5-Source Validation**: archon → crawl4ai-rag → serena → context7 → github
+- **Simple English**: Technical precision in plain language
+- **Workspace Coordination**: All agents save outputs for handoffs
 
 ## Requirements
 
-- VS Code with GitHub Copilot extension
-- MCP tools (memory, filesystem, serena, github, Context7, archon, crawl4ai-rag, sequential-thinking)
+- VS Code + GitHub Copilot extension
+- MCP tools: memory, filesystem, serena, github, context7, sequential-thinking, archon, crawl4ai-rag
 
----
+## Documentation
 
-## Support
-
-For issues, improvements, or questions, see individual agent README files or the complete system documentation.
+- **[AGENT-TOOLS.md](./AGENT-TOOLS.md)**: Tool reference for all agents
+- **[Research-Agent/README.md](./Research-Agent/README.md)**: Research workflows
+- **[Coding-Agent/README.md](./Coding-Agent/README.md)**: Development patterns
+- **[Orchestrating-Agent/README.md](./Orchestrating-Agent/README.md)**: Coordination guide
