@@ -5,160 +5,47 @@ applyTo: '**'
 # Coding Agent Instructions
 
 ## Project Context
-<!-- Provide high-level overview of coding goals and constraints -->
+[Fill in: Project name, main goal, tech stack]
 
-### Development Objectives
-- [ ] Implement features from [SPECIFY SOURCE: Research Agent findings]
-- [ ] Maintain code quality standards for [SPECIFY CODEBASE]
-- [ ] Integrate with existing architecture at [SPECIFY INTEGRATION POINTS]
+**Your Archon Knowledge Base**: Contains your project notes, tasks, and code examples
+**Your Crawl4ai Docs**: Official documentation you've crawled for reference
 
-### Current Codebase
-<!-- List current technologies, structure, and patterns -->
-- **Language/Framework**: [e.g., TypeScript/React, Python/FastAPI]
-- **Architecture**: [e.g., MVC, microservices, monorepo]
-- **Testing**: [e.g., Jest, Pytest, Playwright]
-- **Key Patterns**: [e.g., dependency injection, factory pattern]
+## Validation Requirements
 
-## Coding Guidelines
+### Before ANY Changes
+1. **Check Archon**: Review your notes and tasks
+2. **Check Crawl4ai-rag**: Verify against official docs
+3. **Use Serena**: Find exact symbols, functions, line numbers in codebase
+4. **Use Context7**: Search for similar code patterns
+5. **Use GitHub MCP**: Confirm file paths and structure exist
+6. **ASK PERMISSION**: Show validation results and get approval
 
-### Code Quality Standards
-- **Readability**: Use `mcp_serena` symbolic tools for precise edits
-- **Testing**: Write tests inside the terminal alongside implementation (TDD when possible)
-- **Documentation**: Inline comments for complex logic, README for setup
-- **Error Handling**: Try-catch blocks, proper logging, user-friendly messages
+### During Implementation
+- Use `serena` to find exact function names and symbols
+- Verify paths with `github` MCP search
+- Write tests in terminal using inline scripts
+- No new test files unless explicitly requested
 
-### Development Workflow
-- **Phase 1**: Architecture → Design decisions → Component breakdown
-- **Phase 2**: Implementation → Unit tests → Integration tests  
-- **Phase 3**: Code review → Optimization → Documentation
+### After Implementation
+- Use `serena` to verify no breaking changes to other symbols
+- Use `Context7` to check similar patterns still work
+- Run test scripts in terminal to validate
 
-### Integration with Research Agent
-<!-- Define how to consume Research Agent outputs -->
-- **Memory Keys**: `research_decision`, `implementation_plan`, `code_snippets`
-- **Archon Integration**: Query knowledge base for patterns from researched tools
-- **Handoff Protocol**: Retrieve tool selection → Apply patterns → Store results
+## Code Quality Standards
+[Fill in: Your specific standards, e.g., naming conventions, comment style]
+
+- **Testing**: Write test commands in terminal (e.g., `node -e "test code"`, `python -c "test code"`)
+- **Documentation**: Update inline comments only
+- **Error Handling**: [Your preference]
 
 ## Architecture Patterns
+[Fill in: Your preferred patterns, e.g., MVC, microservices, etc.]
 
-### Component Design
-- **Modularity**: Single responsibility, loose coupling
-- **Reusability**: Extract common patterns to utilities
-- **Testability**: Dependency injection, pure functions
-- **Scalability**: Consider performance implications
+## File Organization
+[Fill in: Your project structure]
 
-### File Organization Template
-```
-src/
-  components/     # UI components (if applicable)
-  services/       # Business logic
-  utils/          # Helper functions
-  types/          # Type definitions
-  tests/          # Test files (mirror src structure)
-  config/         # Configuration files
-```
-
-## Testing Requirements
-
-### Test Coverage
-- **Unit Tests**: 80% minimum coverage for business logic
-- **Integration Tests**: API endpoints, component interactions
-- **E2E Tests**: Critical user flows (optional)
-
-### Test Structure Template
-```[language]
-describe('[Component/Function Name]', () => {
-  it('should [expected behavior]', () => {
-    // Arrange: Setup
-    // Act: Execute
-    // Assert: Verify
-  });
-});
-```
-
-## Error Handling Standards
-
-### Defensive Programming
-```[language]
-try {
-  // Primary logic
-  validateInput(data);
-  const result = await processData(data);
-  return result;
-} catch (error) {
-  logger.error('Process failed', { error, context: data });
-  throw new CustomError('User-friendly message', error);
-}
-```
-
-### Logging Levels
-- **DEBUG**: Development details
-- **INFO**: Business events
-- **WARN**: Recoverable issues
-- **ERROR**: Failures requiring attention
-
-## Context Handoff Protocol
-
-### Memory Keys (Phase-to-Phase)
-- `phase1_architecture`: Design decisions and component structure
-- `phase2_implementation`: Code changes and test results
-- `phase3_review`: Optimization suggestions and final code
-
-### Memory Keys (Orchestrator Integration)
-- `research_to_coding`: Tool selection, implementation checklist from Research Agent
-- `coding_to_orchestrator`: Implementation status, next actions
-
-### Between-Phase Data Flow
-1. **Phase 1 → Phase 2**: Architecture design → Implementation tasks
-2. **Phase 2 → Phase 3**: Implementation → Review checklist
-3. **Phase 3 → Orchestrator**: Final code → Deployment readiness
-
-## Response Format Standards
-
-### Architecture Output (Phase 1)
-```markdown
-## Component: [Name]
-- **Purpose**: [1-2 sentences]
-- **Dependencies**: [list]
-- **API Surface**: [key methods/props]
-- **Testing Strategy**: [approach]
-```
-
-### Implementation Output (Phase 2)
-```markdown
-## File: [path]
-```[language]
-[Complete, working code with comments]
-```
-
-## Test: [path]
-```[language]
-[Test code covering main scenarios]
-```
-```
-
-### Review Output (Phase 3)
-```markdown
-## Optimization: [Area]
-- **Current**: [issue description]
-- **Improvement**: [suggested change]
-- **Impact**: [performance/readability/maintainability]
-- **Priority**: [High/Medium/Low]
-```
-
-## Archon Knowledge Base Usage
-
-### Query Patterns
-- **Design Patterns**: "factory pattern implementation in [language]"
-- **Best Practices**: "[framework] error handling patterns"
-- **Code Examples**: "[library] async/await usage"
-
-### Storage Patterns
-- Store architecture decisions with context
-- Save reusable code snippets with tags
-- Document integration patterns for future reference
-
-## Constraints and Limitations
-- **No breaking changes**: Flag compatibility issues upfront
-- **Incremental development**: Small, testable changes
-- **Documentation required**: Update README for new features
-- **Performance consideration**: Profile before optimizing
+## Context Handoff (Memory Keys)
+- `phase1_architecture`: Design decisions
+- `phase2_implementation`: Code changes and validation results
+- `phase3_review`: Optimization findings
+- `archon_project_notes`: Your ongoing project notes/tasks
