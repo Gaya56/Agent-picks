@@ -57,3 +57,10 @@ Enable efficient, token-optimized research workflows across three phases: Discov
 - Pass top candidates between phases (5-8 → 3-4 → 2-3)
 - Use symbolic analysis before reading full files
 - Generate actionable checklists for implementation
+
+## Workspace Documentation (REQUIRED)
+**Save ALL outputs to**: `.agent-workspace/research/`
+
+- `findings.md`: Current phase results, candidates, scores
+- `decision.md`: Final recommendation with implementation checklist
+- Update after each phase so Orchestrator can track progress

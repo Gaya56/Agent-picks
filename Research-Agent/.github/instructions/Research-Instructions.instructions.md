@@ -112,3 +112,12 @@ applyTo: '**'
 - **No breaking changes**: Flag migration complexity upfront
 - **No full file rewrites**: Provide targeted patches only
 - **Token budget**: Stay within 150-200 words per section
+
+## Workspace Documentation (REQUIRED)
+**Directory**: `.agent-workspace/research/`
+
+**Files to maintain**:
+- `findings.md`: Phase outputs (candidates, scores, evaluations)
+- `decision.md`: Final recommendation with implementation plan
+
+**Purpose**: Orchestrator Agent reads these files to coordinate with Coding Agent and track project progress. Update after each research phase.

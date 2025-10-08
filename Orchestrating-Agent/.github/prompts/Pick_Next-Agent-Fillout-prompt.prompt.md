@@ -1,94 +1,96 @@
 ---
 mode: Orchestrator
 tools: ['mcp_filesystem', 'mcp_memory', 'mcp_sequential-thinking']
-description: 'Decide next agent (Research or Coding) and prepare their prompt'
+description: 'Pick next agent (Research or Coding) and prepare their prompt with workspace context'
 ---
 
 # Route to Next Agent
 
 ## Objective
-Analyze workspace state, decide which agent to use next, fill out their prompt with context from shared workspace.
+Decide which agent to use next. Fill their prompt with context from workspace.
 
 ## Step 1: Analyze Current State
 
-**Read workspace:**
 ```bash
 Read: .agent-workspace/project-state.md
 Read: .agent-workspace/research/*.md (if exists)
 Read: .agent-workspace/coding/*.md (if exists)
 ```
 
-**Sequential thinking:**
-```markdown
-1. What was the last completed task?
+**Sequential thinking**:
+1. What's the last completed task?
 2. Is there a research decision? (check research/decision.md)
 3. Is architecture designed? (check coding/architecture.md)
-4. What's the next logical step?
-```
+4. What's the logical next step?
 
-## Step 2: Decision Logic
+## Step 2: Pick Agent
 
-**Choose Research Agent if:**
-- No tool/library selected yet
+**Research Agent** if:
+- No tool/library selected
 - Need to compare options
-- Need API documentation review
+- Need API docs review
 - Technical decision pending
 
-**Choose Coding Agent if:**
+**Coding Agent** if:
 - Research decision exists
-- Ready to design architecture
+- Ready for architecture design
 - Ready to implement feature
-- Have clear technical direction
+- Clear technical direction
 
-## Step 3: Prepare Agent Prompt
+## Step 3: Explain in Simple English (Max 75 Words)
 
-**For Research Agent:**
-```markdown
-## Research Task
-**Goal**: [From project-state.md next task]
-**Context**: [What Coding Agent needs - from coding notes]
-**Constraints**: [Project requirements - from workspace]
+**Format**:
+```
+"[Current situation - 1 sentence]
 
-Use: Research-Agent Phase-[1/2/3].prompt.md
+Next Agent: [Research/Coding]
+Reason: [Why this agent now - 1 sentence]
+Context: [2-3 key facts from workspace they need]
+
+Expected Output: [What they should produce]
+Save To: [which workspace file]"
 ```
 
-**For Coding Agent:**
-```markdown
-## Coding Task
-**Research Decision**: [From research/decision.md]
-**Integration Points**: [From coding/architecture.md if exists]
-**Requirements**: [From project-state.md]
+**Example for Research**:
+```
+"Need state management library for React app.
 
-Use: Coding-Agent-[1/2/3].prompt.md
+Next Agent: Research
+Reason: No library chosen yet, need evaluation
+Context: 
+- Small app (~10 components)
+- Need <20KB bundle impact
+- TypeScript required
+
+Expected Output: Compare Redux/Zustand/Jotai with recommendation
+Save To: .agent-workspace/research/decision.md"
 ```
 
-## Step 4: Output Decision
+**Example for Coding**:
+```
+"Zustand selected for state management (see research/decision.md).
 
-**Format (max 75 words):**
-```markdown
-## Routing Decision
+Next Agent: Coding
+Reason: Decision made, ready to build
+Context:
+- Use Zustand v4.5.0
+- Store at src/store/index.ts
+- Need auth + cart slices
 
-**Current Status**: [1 sentence summary]
-**Next Agent**: Research/Coding
-**Reason**: [Why this agent now]
-**Prompt File**: [Exact prompt filename]
-
-**Context for Agent**:
-[2-3 key facts from workspace they need to know]
-
-**Expected Output**:
-[What this agent should produce]
+Expected Output: Store architecture + implementation
+Save To: .agent-workspace/coding/architecture.md, implementation.md"
 ```
 
-## Step 5: Update Memory
+## Step 4: Update Memory
 
 ```bash
 Store: orchestrator_last_decision
-Content: [Agent chosen, reason, timestamp]
+Content: "[Agent chosen] - [reason] - [timestamp]"
 ```
 
 ## Success Criteria
 - Decision based on workspace analysis (not assumptions)
-- Clear reason for agent choice
-- Prompt context includes relevant workspace info
-- Next agent has everything they need to proceed
+- Clear reason for agent choice in plain English
+- Context includes relevant workspace details
+- Exact file references where applicable
+- Under 75 words

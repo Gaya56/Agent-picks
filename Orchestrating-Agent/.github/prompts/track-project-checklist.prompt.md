@@ -1,13 +1,13 @@
 ---
 mode: Orchestrator
-tools: ['mcp_filesystem', 'mcp_memory']
-description: 'Track project status and explain current state in simple English'
+tools: ['filesystem', 'memory', 'Github', 'Context7', 'sequential-thinking']
+description: 'Explain project status in simple English with exact technical references'
 ---
 
-# Track Project Progress
+# Track Project Status
 
 ## Objective
-Review `.agent-workspace/project-state.md`, summarize progress in simple English, confirm status with workspace notes.
+Tell user where project is at in **simple English** with **exact code references**.
 
 ## Step 1: Read Project State
 
@@ -15,52 +15,62 @@ Review `.agent-workspace/project-state.md`, summarize progress in simple English
 Read: .agent-workspace/project-state.md
 ```
 
-**Check:**
-- What tasks are marked complete (✓)
-- What's currently in progress (→)
-- What's pending ( )
+Check sections:
+- Completed ✓
+- In Progress →
+- Pending
 
 ## Step 2: Verify with Agent Notes
 
-**Cross-reference:**
+Cross-reference:
 ```bash
-If Research complete → Check: .agent-workspace/research/decision.md exists
-If Coding complete → Check: .agent-workspace/coding/implementation.md exists
+Read: .agent-workspace/research/decision.md (if exists)
+Read: .agent-workspace/coding/implementation.md (if exists)
 ```
 
-**Validate:**
-- Does workspace match project-state.md checklist?
-- Are there notes without checklist updates?
-- Are there checklist items without notes?
+Confirm project-state.md matches actual workspace reality.
 
-## Step 3: Simple English Summary
+## Step 3: Explain in Simple English (Max 75 Words)
 
-**Output format (max 75 words):**
-```markdown
-## Project Status
+**Format**:
+```
+"[Current stage in plain language].
 
-**Completed**: [What's done - simple terms]
-**Current**: [What we're working on now]
-**Next**: [What's coming up]
+Completed: [what's done - 1 sentence]
+Current: [what you're working on - 1 sentence]
+Next: [what's next - 1 sentence]
 
-**In Plain English**:
-[1-2 sentences explaining where we are]
+File: [current work file:line]
+Symbol: [function/component working on]
+Imports: [key imports if relevant]
+Workflow: [step → step → step]"
+```
 
-Example: "We finished researching authentication options and picked Passport.js. 
-Currently building the login system. Next step is testing."
+**Example**:
+```
+"Building authentication system.
+
+Completed: Login form with validation
+Current: Token refresh logic
+Next: Logout and session timeout
+
+File: src/auth/refresh.ts:23
+Function: refreshToken
+Imports: jwt, axios
+Workflow: Check expiry → request new token → update storage → retry failed request"
 ```
 
 ## Step 4: Update if Needed
 
-If project-state.md is outdated:
-```markdown
-Update: project-state.md
-Add: Completed tasks from workspace notes
-Mark: Current task based on latest activity
+If `project-state.md` outdated:
+```bash
+Update: .agent-workspace/project-state.md
+Sync: Match actual agent outputs
 ```
 
 ## Success Criteria
-- Status reflects actual workspace contents
-- Summary is clear and jargon-free
-- Next steps are obvious
-- project-state.md is current
+- Status reflects workspace reality
+- Explanation in plain English (no jargon)
+- Exact file:line references included
+- Next steps obvious
+- Under 75 words

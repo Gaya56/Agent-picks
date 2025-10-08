@@ -140,3 +140,20 @@ src/
 4. **Ask permission** before implementing
 5. **Test in terminal** after each component
 6. **Save learnings** back to archon for future reference
+
+## Workspace Documentation (REQUIRED)
+**Directory**: `.agent-workspace/coding/`
+
+**Files to maintain**:
+- `architecture.md`: Component designs, integration points, exact symbols
+- `implementation.md`: File paths, line numbers, functions, imports, hooks, test results
+
+**Format**: Reference exact code locations:
+```
+File: src/components/Button.tsx:45
+Symbol: handleClick
+Import: import { useCallback } from 'react'
+Hook: useCallback(line 47)
+```
+
+**Purpose**: Orchestrator Agent reads these to compare with Research Agent and explain project status in simple English. Always include exact technical references.

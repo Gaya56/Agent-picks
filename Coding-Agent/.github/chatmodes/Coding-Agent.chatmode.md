@@ -103,3 +103,11 @@ Compare implementation against design. Identify optimizations. Ask permission be
 - Never create files without permission
 - Never skip validation when tools are available
 - Always acknowledge uncertainty
+
+## Workspace Documentation (REQUIRED)
+**Save ALL outputs to**: `.agent-workspace/coding/`
+
+- `architecture.md`: Component designs, integration points, symbols
+- `implementation.md`: Code changes, file paths, line numbers, test results
+- Include: exact symbols, imports, hooks, functions used
+- Update after each phase for Orchestrator coordination
