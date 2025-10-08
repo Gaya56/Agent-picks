@@ -7,12 +7,12 @@
 | **mcp_memory** | ✅ | ✅ | ✅ | Store context between phases and sessions (candidates, decisions, routing) |
 | **mcp_filesystem** | ✅ | ✅ | ✅ | Read/write files, explore codebase, manage workspace outputs |
 | **mcp_serena** | ✅ | ✅ | ❌ | Symbolic code analysis (find symbols, references, exact line numbers) |
-| **github** | ✅ | ✅ | ❌ | Search repositories, discover candidates, verify file paths and structure |
-| **mcp_context7** | ✅ | ✅ | ❌ | Fetch documentation, compare patterns with official sources |
+| **github** | ✅ | ✅ | ✅ | Search repositories, verify file paths and structure, discover candidates |
+| **mcp_context7** | ✅ | ✅ | ✅ | Fetch documentation, compare patterns with official sources |
 | **mcp_sequential-thinking** | ✅ | ✅ | ✅ | Multi-step reasoning, decision matrices, conflict analysis |
-| **archon** | ❌ | ✅ | ❌ | User's project knowledge, notes, tasks, reusable code examples |
+| **archon** | ❌ | ✅ | ✅ | User's project knowledge, notes, tasks, reusable code examples |
 | **mcp_crawl4ai-rag** | ❌ | ✅ | ❌ | User's crawled official documentation for validation |
-| **Total Tools** | **6** | **8** | **3** | |
+| **Total Tools** | **6** | **8** | **6** | |
 
 ---
 
@@ -50,15 +50,18 @@
 
 ---
 
-### Orchestrator Agent (3 Tools)
+### Orchestrator Agent (6 Tools)
 
 | Tool | Primary Use Cases |
 |------|------------------|
 | **mcp_filesystem** | Read workspace outputs (research/findings.md, coding/implementation.md, project-state.md) |
 | **mcp_memory** | Track routing decisions, store discrepancies, maintain project summary |
 | **mcp_sequential-thinking** | Compare agent notes, analyze conflicts, multi-step reasoning for routing decisions |
+| **archon** | Check project documentation, reference past decisions, access task tracking and code examples |
+| **mcp_context7** | Compare implementation patterns with official docs, verify suggested approaches |
+| **github** | Verify repository structure, confirm file paths exist, search for code references |
 
-**Workflow**: Read workspace (filesystem) → Analyze conflicts (sequential-thinking) → Track decisions (memory) → Explain in simple English
+**Workflow**: Read workspace (filesystem) → Check project notes (archon) → Verify with docs (Context7) → Analyze conflicts (sequential-thinking) → Track decisions (memory) → Explain in simple English
 
 ---
 
@@ -71,16 +74,18 @@
 
 ### Code Analysis Tools (Research + Coding)
 - **mcp_serena**: Symbolic analysis, exact locations
-- **github**: Repository search, verification
-- **mcp_context7**: Documentation and pattern comparison
+- **github**: Repository search, verification (also used by Orchestrator)
+- **mcp_context7**: Documentation and pattern comparison (also used by Orchestrator)
 
-### Knowledge Tools (Coding Only)
-- **archon**: User's project-specific knowledge
-- **mcp_crawl4ai-rag**: Crawled official documentation
+### Knowledge Tools (Coding + Orchestrator)
+- **archon**: User's project-specific knowledge, notes, tasks, code examples
+- **mcp_crawl4ai-rag**: Crawled official documentation (Coding only)
 
-### Orchestrator Specialty
-- **Minimal toolset**: Only needs filesystem, memory, and sequential-thinking
-- **Focus**: Coordination and explanation, not code analysis
+### Orchestrator Enhanced Tools
+- **archon**: Access project history, requirements, and past decisions
+- **mcp_context7**: Verify patterns against official documentation  
+- **github**: Confirm file paths and repository structure
+- **Minimal core**: filesystem, memory, sequential-thinking still primary tools
 
 ---
 
@@ -100,8 +105,8 @@ mcp_memory, mcp_filesystem, mcp_serena, github, mcp_context7, mcp_sequential-thi
 
 ### Required for Orchestrator Agent
 ```bash
-# Install MCP servers (minimal)
-mcp_memory, mcp_filesystem, mcp_sequential-thinking
+# Install MCP servers
+mcp_memory, mcp_filesystem, mcp_sequential-thinking, archon, mcp_context7, github
 ```
 
 ---
@@ -117,7 +122,7 @@ Some MCP servers have naming variations. Update `tools:` array in chat modes if 
 ### Optional vs Required
 - **Coding Agent**: Can work without archon/crawl4ai-rag (asks user for info)
 - **Research Agent**: Can work without context7 (uses github for docs)
-- **Orchestrator**: All 3 tools required for full functionality
+- **Orchestrator**: Core tools (filesystem, memory, sequential-thinking) required; archon/context7/github enhance capabilities
 
 ### VS Code Settings
 ```json
@@ -155,9 +160,10 @@ Save: filesystem (write to .agent-workspace/coding/)
 
 ### Orchestrator Example
 ```
-Status: filesystem (read workspace files) → explain in simple English
-Compare: filesystem (read research + coding) → sequential-thinking (analyze) → state which is correct
-Route: sequential-thinking (analyze needs) → memory (store decision) → filesystem (update project-state.md)
+Status: filesystem (read workspace) → archon (check project notes) → explain in simple English
+Compare: filesystem (read research + coding) → sequential-thinking (analyze) → context7 (verify against docs) → state which is correct
+Route: archon (check requirements) → sequential-thinking (analyze needs) → memory (store decision) → filesystem (update project-state.md)
+Clarify: archon (reference past decisions) → context7 (compare with official patterns) → github (verify paths) → explain in simple terms
 ```
 
 ---
